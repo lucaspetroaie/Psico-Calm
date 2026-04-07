@@ -88,8 +88,6 @@ h1 {
     line-height: 1.2;
     margin-bottom: 20px;
     max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 p {
@@ -110,8 +108,7 @@ p {
 
 /* 4. BIENESTAR MENTAL */
 .bienestar-mental {
-    /* RUTA CORREGIDA: sale de css/ y entra a imagenes/ */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../imagenes/psicologo.png');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('psicologo.png');
     background-size: cover;
     background-position: center;
     min-height: 70vh;
@@ -135,12 +132,12 @@ p {
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-left: none; /* Quitamos el borde lateral aquí */
 }
 
 .experiencia h3 {
     color: #fff !important;
     border-bottom: 1px solid rgba(255,255,255,0.2) !important;
-    margin-bottom: 25px;
 }
 
 .experiencia h3::before {
@@ -150,14 +147,8 @@ p {
     margin-bottom: 10px;
 }
 
-.experiencia ul {
-    list-style: none;
-    padding: 0;
-}
-
 .experiencia li {
     color: #e2e8f0 !important;
-    margin-bottom: 15px;
 }
 
 /* 6. TARJETAS DE ARTÍCULOS */
@@ -177,7 +168,7 @@ article:hover {
     box-shadow: 0 15px 35px rgba(159, 123, 195, 0.2);
 }
 
-article h2 {
+article h2, article h3 {
     color: #7d5ba6;
     margin-top: 0;
     margin-bottom: 20px;
@@ -245,7 +236,69 @@ footer {
 
 footer p {
     color: white;
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 1.2rem;
+    margin: 10px; /* Se agregó la unidad 'px' y el ';' */
     font-style: normal;
+}
+/* 10. ESTILOS DE CONTACTO */
+.contacto-container {
+    padding: 60px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.formulario-contacto {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+
+.campo label {
+    color: #6a4c93;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.campo input, .campo textarea {
+    padding: 12px 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.campo input:focus, .campo textarea:focus {
+    outline: none;
+    border-color: #9f7bc3;
+    background-color: #fdfbff;
+}
+
+.btn-enviar {
+    background-color: #9f7bc3;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    background-color: #7d5ba6;
+    transform: translateY(-2px);
 }

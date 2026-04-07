@@ -37,16 +37,12 @@ nav {
     transition: transform 0.3s ease;
 }
 
-.texto-logo {
-    display: flex;
-    flex-direction: column;
-}
-
 .nombre-logo {
     font-size: 1.4rem;
     letter-spacing: 2px;
     font-weight: bold;
     color: #9f7bc3;
+    display: block;
 }
 
 .especialidad {
@@ -86,7 +82,7 @@ h1 {
     font-size: 2.2rem;
     text-align: center;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin: 20px auto;
     max-width: 800px;
 }
 
@@ -97,7 +93,6 @@ p {
     max-width: 750px;
     margin: 0 auto 30px;
     text-align: center;
-    font-style: italic;
 }
 
 .resaltado {
@@ -106,52 +101,21 @@ p {
     border-bottom: 2px solid #e9d8fd;
 }
 
-/* 4. BIENESTAR MENTAL */
-.bienestar-mental {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('psicologo.png');
+/* 4. SECCIÓN HERO (BIENESTAR MENTAL) */
+.bienestar-mental, .servicios-hero {
+    /* RUTA CORREGIDA: sale de css/ y entra a imagenes/ */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('../imagenes/psicologo.png');
     background-size: cover;
     background-position: center;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 80px 20px;
     text-align: center;
-    padding: 40px 20px;
 }
 
-/* 5. EL CARTEL - EXPERIENCIA */
-.experiencia {
-    background: linear-gradient(135deg, #4b2c71 0%, #331c4e 100%);
-    color: #ffffff;
-    border-radius: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    padding: 50px 40px;
-    max-width: 700px;
-    margin: 60px auto;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-left: none; /* Quitamos el borde lateral aquí */
+.bienestar-mental p {
+    font-style: italic;
 }
 
-.experiencia h3 {
-    color: #fff !important;
-    border-bottom: 1px solid rgba(255,255,255,0.2) !important;
-}
-
-.experiencia h3::before {
-    content: '🧠';
-    display: block;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.experiencia li {
-    color: #e2e8f0 !important;
-}
-
-/* 6. TARJETAS DE ARTÍCULOS */
+/* 5. TARJETAS DE ARTÍCULOS (GENERAL) */
 article {
     background-color: #ffffff;
     padding: 40px;
@@ -177,7 +141,7 @@ article h2, article h3 {
     padding-bottom: 10px;
 }
 
-/* 7. LISTAS Y CHECKS */
+/* 6. LISTAS CON CHECKS */
 article ul {
     list-style: none;
     padding: 0;
@@ -188,7 +152,6 @@ article li {
     padding-left: 35px;
     margin-bottom: 15px;
     color: #4a5568;
-    line-height: 1.6;
     text-align: left;
 }
 
@@ -198,49 +161,67 @@ article li::before {
     left: 0;
     color: #9f7bc3;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
-.experiencia li::before {
-    color: #d8b4fe;
-}
-
-/* 8. ANIMACIONES */
-@keyframes aparecerSuave {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.bienestar-mental h1 { animation: aparecerSuave 1s ease-out forwards; }
-.bienestar-mental p { opacity: 0; animation: aparecerSuave 1s ease-out 0.4s forwards; }
-
-.experiencia li { opacity: 0; }
-.experiencia li:nth-child(1) { animation: aparecerSuave 0.8s ease-out 0.8s forwards; }
-.experiencia li:nth-child(2) { animation: aparecerSuave 0.8s ease-out 1.0s forwards; }
-.experiencia li:nth-child(3) { animation: aparecerSuave 0.8s ease-out 1.2s forwards; }
-
-/* 9. FOOTER */
-footer {
-    background-color: #4b2c71;
+/* 7. SECCIÓN ESPECIAL (EXPERIENCIA / CARTEL) */
+.experiencia {
+    background: linear-gradient(135deg, #4b2c71 0%, #331c4e 100%);
     color: #ffffff;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
+    border-radius: 30px;
+    max-width: 700px;
+    border-left: none; /* Sin borde para el destacado */
 }
 
-footer p {
-    color: white;
-    font-size: 1.2rem;
-    margin: 10px; /* Se agregó la unidad 'px' y el ';' */
-    font-style: normal;
+.experiencia h3 {
+    color: #fff !important;
+    border-bottom-color: rgba(255,255,255,0.2) !important;
 }
-/* 10. ESTILOS DE CONTACTO */
+
+.experiencia li { color: #e2e8f0 !important; }
+.experiencia li::before { color: #d8b4fe !important; }
+
+/* 8. SERVICIOS (FLEXBOX DINÁMICO) */
+.contenedor-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tarjeta-servicio {
+    background-color: #ffffff;
+    flex: 1 1 300px; /* Crece y se achica, base de 300px */
+    max-width: 350px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    border-left: none; /* Reseteamos estilo de article general */
+    border-bottom: 5px solid #9f7bc3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta-servicio h3 {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.tarjeta-servicio p {
+    font-size: 1rem;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.icono-servicio {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+/* 9. FORMULARIO DE CONTACTO */
 .contacto-container {
     padding: 60px 20px;
     max-width: 600px;
@@ -264,25 +245,18 @@ footer p {
     text-align: left;
 }
 
-.campo label {
-    color: #6a4c93;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
+.campo label { color: #6a4c93; font-weight: 600; }
 
 .campo input, .campo textarea {
-    padding: 12px 15px;
+    padding: 12px;
     border: 2px solid #edf2f7;
     border-radius: 10px;
     font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
 }
 
 .campo input:focus, .campo textarea:focus {
     outline: none;
     border-color: #9f7bc3;
-    background-color: #fdfbff;
 }
 
 .btn-enviar {
@@ -291,14 +265,114 @@ footer p {
     padding: 15px;
     border: none;
     border-radius: 10px;
-    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px;
+    transition: 0.3s;
 }
 
-.btn-enviar:hover {
-    background-color: #7d5ba6;
-    transform: translateY(-2px);
+.btn-enviar:hover { background-color: #7d5ba6; transform: translateY(-2px); }
+
+/* --- SECCIÓN NOSOTROS (SOBRE MÍ) --- */
+.sobre-mi-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 80px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+.sobre-mi-foto img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+    box-shadow: 20px 20px 0px #e9d8fd; /* Detalle decorativo violeta */
+}
+
+.sobre-mi-texto {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.sobre-mi-texto h1 {
+    text-align: left;
+    margin-left: 0;
+}
+
+.formacion-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.formacion-badges span {
+    background-color: #9f7bc3;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* --- SECCIÓN METODOLOGÍA --- */
+.metodologia {
+    background-color: #ffffff;
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.metodologia h2 {
+    color: #6a4c93;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.metodologia-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.metodo-item {
+    background-color: #f9f9fb;
+    padding: 30px;
+    border-radius: 20px;
+    flex: 1 1 250px;
+    max-width: 350px;
+    transition: 0.3s;
+}
+
+.metodo-item:hover {
+    background-color: #f3eff9;
+}
+
+.metodo-item h3 {
+    color: #9f7bc3;
+    margin-bottom: 15px;
+    border: none !important; /* Limpieza de bordes previos */
+}
+
+/* 10. ANIMACIONES */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bienestar-mental h1 { animation: aparecer 1s forwards; }
+.bienestar-mental p { opacity: 0; animation: aparecer 1s 0.4s forwards; }
+
+/* 11. FOOTER */
+footer {
+    background-color: #4b2c71;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+footer p { color: white; margin: 0; font-size: 1rem; }
